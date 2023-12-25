@@ -6,12 +6,12 @@ defmodule Russian.Mixfile do
       app: :russian,
       version: "0.1.0",
       elixir: "~> 1.0",
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
-      deps: deps,
-      package: package,
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      package: package(),
       description: "Transliterate a string with russian characters"
-   ]
+    ]
   end
 
   # Configuration for the OTP application
@@ -22,10 +22,12 @@ defmodule Russian.Mixfile do
   end
 
   defp package do
-    [maintainers: ["Anatoliy Kovalchuk"],
-     licenses: ["MIT"],
-     links: %{"GitHub" => "https://github.com/Kr00lIX/russian_elixir"},
-     files: ~w(mix.exs README.md lib)]
+    [
+      maintainers: ["Anatoliy Kovalchuk"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/Kr00lIX/russian_elixir"},
+      files: ~w(mix.exs README.md lib)
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -39,9 +41,9 @@ defmodule Russian.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:ex_spec, "~> 1.0", only: :test},
+      {:ex_spec, "~> 2.0", only: :test},
       {:ex_doc, "~> 0.8", only: :dev},
-      {:earmark, ">= 0.0.0", only: :dev},
+      {:earmark, ">= 0.0.0", only: :dev}
     ]
   end
 end
